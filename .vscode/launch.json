@@ -3,6 +3,20 @@
   "configurations": [
     {
       "type": "java",
+      "name": "Register",
+      "request": "launch",
+      "mainClass": "Register",
+      "projectName": "DSA-and-java-practice_7e2b6121"
+    },
+    {
+      "type": "java",
+      "name": "register",
+      "request": "launch",
+      "mainClass": "register",
+      "projectName": "DSA-and-java-practice_7e2b6121"
+    },
+    {
+      "type": "java",
       "name": "simple_claculater",
       "request": "launch",
       "mainClass": "simple_claculater",
