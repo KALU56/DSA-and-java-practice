@@ -6,13 +6,13 @@ using namespace std;
 int main() {
     string text;
     char key;
-    int index = -1; // Initialize index as -1 (not found)
+    int index = -1; 
 
-    // Input the string from the user
+  
     cout << "Enter a string: ";
     getline(cin, text);
 
-    // Input the character to search
+   
     cout << "Enter the character to search: ";
     cin >> key;
 
