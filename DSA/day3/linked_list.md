@@ -400,3 +400,106 @@ start → [ 101 | Alice  | * ] → [ 102 | Bob  | * ] → [ 103 | Charlie | NULL
 - Otherwise, we **find the last node and attach the new student**.  
 
 💡 **Does this explanation help? Let me know if you want another visualization! 🎨😊**
+### **Understanding `del_e()` (Delete from the End of the List)**  
+
+The function **`del_e()`** is responsible for **deleting the last student (node) from the linked list**. Let's break it down step by step with a **visual explanation** so you can understand it easily.  
+
+---
+
+### **Step-by-Step Explanation**
+#### **1️⃣ Checking If the List is Empty**
+```cpp
+if (start == NULL) {
+    cout << "The list is empty" << endl;
+}
+```
+🔹 If `start == NULL`, it means there are **no students in the list**.  
+🔹 The function **prints a message** and does nothing.  
+
+📌 **Visualization (Empty List)**
+```
+start → NULL   (No students)
+```
+✅ **Since there's nothing to delete, the function just exits.**
+
+---
+
+#### **2️⃣ Deleting When There's Only One Node**
+```cpp
+else if (start->next == NULL) {
+    delete start;
+    start = NULL;
+    cout << "One student deleted" << endl;
+}
+```
+🔹 If there is only **one student in the list**, we simply delete it.  
+🔹 `start` is set to `NULL`, meaning the list is now empty.  
+
+📌 **Example**
+#### **Before Deletion:**
+```
+start → [101 | Alice | NULL ]
+```
+#### **After Deletion:**
+```
+start → NULL   (List is empty)
+```
+✅ **Now the list is empty!**
+
+---
+
+#### **3️⃣ Deleting the Last Node When Multiple Students Exist**
+```cpp
+else {
+    student *temp = start;
+    while (temp->next->next != NULL) {
+        temp = temp->next;
+    }
+    delete temp->next;
+    temp->next = NULL;
+    cout << "One student deleted from the end" << endl;
+}
+```
+🔹 We use a `while` loop to **move `temp` to the second last node**.  
+🔹 Then, we **delete the last node** and set `temp->next = NULL` so that `temp` becomes the last node.  
+
+---
+
+### **📌 Example: Deleting the Last Student in a List with Multiple Students**
+#### **Before Deletion:**
+```
+start → [101 | Alice  | * ] → [102 | Bob  | * ] → [103 | Charlie | NULL ]
+```
+#### **Step-by-Step Execution**
+1️⃣ `temp = start` → `temp` points to **Alice**.  
+2️⃣ `while (temp->next->next != NULL)`:  
+   - Moves `temp` to **Bob**.  
+3️⃣ `delete temp->next;` → Deletes **Charlie**.  
+4️⃣ `temp->next = NULL;` → Bob is now the last student.
+
+#### **After Deletion:**
+```
+start → [101 | Alice  | * ] → [102 | Bob  | NULL ]
+```
+✅ **Charlie is deleted from the list!**
+
+---
+
+### **Why This Works?**
+| Line of Code | What It Does |
+|-------------|--------------|
+| `if (start == NULL)` | Checks if the list is empty. |
+| `else if (start->next == NULL)` | Deletes the only node if there's just one. |
+| `while (temp->next->next != NULL)` | Finds the second-last node. |
+| `delete temp->next;` | Deletes the last node. |
+| `temp->next = NULL;` | Updates the list to remove the last node. |
+| `cout << "One student deleted..."` | Confirms deletion. |
+
+---
+
+### **Final Thoughts**
+- If the list is **empty**, nothing happens.  
+- If there is **one student**, they get deleted, and the list becomes empty.  
+- If there are **multiple students**, the last one is removed, and the second-last student becomes the last student.  
+
+🔥 **Let me know if you need another visualization! 🎨😊**
