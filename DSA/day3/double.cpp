@@ -90,21 +90,7 @@ void add(){
      }
    }
  }
- void searchand dispaly(){
-  int id;
-  cout<<"please enter the student id to search "<<endl;
-  cin>>id;
-  student *temp1=start;
-  while(temp1!=NULL){
-    temp1=temp1->next;
-    if(temp1->id==id){
-      cout<<temp1->id<<""<<temp1->name;
-      break;
-     }
-     else{
-      cout<<"not found";
-    }
- }
+
 
  void search() {
   if (start == NULL) {
