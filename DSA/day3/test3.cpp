@@ -63,9 +63,10 @@ void add(){
    }
    else if (start->next==NULL)
    {
-     start->next=temp;
+     start->next=NULL;
      temp->prev=start;
      temp->next=NULL;
+     start->next=temp;
    }
    else
    {
