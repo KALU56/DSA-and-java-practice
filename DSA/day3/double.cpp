@@ -14,6 +14,8 @@ struct student {
 void add();
 void display();
 void search();
+void del();
+
 
 
 int main() {
@@ -26,7 +28,8 @@ int main() {
         cout<<"1.add registration"<<endl;
         cout<<"2.display all registration"<<endl;
         cout << "3. Search registration by ID" << endl;
-        cout << "4. Exit" << endl;
+        cout<<"4. Delete registration by ID" << endl;
+        cout << "5. Exit" << endl;
         cout << "Please enter your choice: ";
         cin >> choice;
         
@@ -34,7 +37,8 @@ int main() {
           case 1: add(); break;
           case 2: display(); break;
           case 3: search(); break;
-          case 4: ch = 'n'; cout << "Goodbye!\n"; break;
+          case 4: del(); break;
+          case 5: ch = 'n'; cout << "Goodbye!\n"; break;
           default: cout << "Please enter a valid choice (1-4).\n"; getch();
       }
         
@@ -138,4 +142,55 @@ void display() {
         }
     }
     getch();
+}
+void del(){
+student*curr=start;
+if(start==NULL){
+  cout<<"the list is empty"<<endl;
+  getch();
+}
+else if(start->next==NULL){
+  start=NULL;
+  delete curr;
+  cout<<"one student delete"<<endl;
+  getch();
+
+}
+else {
+  int Id;
+  cout<<"please enter the student id you want to delete"<<endl;
+  cin>>Id;
+ 
+    while(curr->id!=Id&&curr->next!=NULL){
+      curr=curr->next;
+    }
+    if(curr->next==NULL&&curr->prev==NULL){
+      start=NULL;
+      delete curr;
+
+      cout<<"the student with this id is not found"<<endl;
+      getch();
+    }
+    else if(curr->next!=NULL&&curr->prev==NULL){
+      start = start->next;
+      delete curr;
+      cout<<"the student with this id is not found"<<endl;
+      getch();
+     
+    }
+    else if(curr->next!=NULL&&curr->prev==NULL){
+      start = start->next;
+      delete curr;
+      cout<<"the student with this id is not found"<<endl;
+      getch();
+     
+    }
+    else{
+      curr->prev->next=curr->next;
+      curr->next->prev=curr->prev;
+      delete curr;
+    }
+  }
+
+
 }
